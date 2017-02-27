@@ -12,6 +12,8 @@
 		3A02AF551E6351FA007E01A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A02AF531E6351FA007E01A5 /* Main.storyboard */; };
 		3A02AF571E6351FA007E01A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A02AF561E6351FA007E01A5 /* Assets.xcassets */; };
 		3A02AF5A1E6351FA007E01A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A02AF581E6351FA007E01A5 /* LaunchScreen.storyboard */; };
+		3A07054A1E638662005BD44F /* EmojiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0705491E638662005BD44F /* EmojiKit.framework */; };
+		3A07054C1E638F53005BD44F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A07054B1E638F53005BD44F /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		3A02AF561E6351FA007E01A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A02AF591E6351FA007E01A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A02AF5B1E6351FA007E01A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A0705491E638662005BD44F /* EmojiKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EmojiKit.framework; path = Carthage/Build/iOS/EmojiKit.framework; sourceTree = "<group>"; };
+		3A07054B1E638F53005BD44F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A07054A1E638662005BD44F /* EmojiKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,7 @@
 			children = (
 				3A02AF4E1E6351F9007E01A5 /* EmojiAutocompleteExample */,
 				3A02AF4D1E6351F9007E01A5 /* Products */,
+				3A0705481E638662005BD44F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +60,7 @@
 		3A02AF4E1E6351F9007E01A5 /* EmojiAutocompleteExample */ = {
 			isa = PBXGroup;
 			children = (
+				3A07054B1E638F53005BD44F /* Extensions.swift */,
 				3A02AF4F1E6351F9007E01A5 /* AppDelegate.swift */,
 				3A02AF511E6351FA007E01A5 /* ViewController.swift */,
 				3A02AF531E6351FA007E01A5 /* Main.storyboard */,
@@ -62,6 +69,14 @@
 				3A02AF5B1E6351FA007E01A5 /* Info.plist */,
 			);
 			path = EmojiAutocompleteExample;
+			sourceTree = "<group>";
+		};
+		3A0705481E638662005BD44F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A0705491E638662005BD44F /* EmojiKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +89,7 @@
 				3A02AF481E6351F9007E01A5 /* Sources */,
 				3A02AF491E6351F9007E01A5 /* Frameworks */,
 				3A02AF4A1E6351F9007E01A5 /* Resources */,
+				3A02AF931E637F23007E01A5 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -132,11 +148,30 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3A02AF931E637F23007E01A5 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/EmojiKit.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3A02AF481E6351F9007E01A5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A07054C1E638F53005BD44F /* Extensions.swift in Sources */,
 				3A02AF521E6351FA007E01A5 /* ViewController.swift in Sources */,
 				3A02AF501E6351F9007E01A5 /* AppDelegate.swift in Sources */,
 			);
@@ -262,6 +297,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 63259B266M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = EmojiAutocompleteExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dastronics.EmojiAutocompleteExample;
@@ -275,6 +314,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 63259B266M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = EmojiAutocompleteExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dastronics.EmojiAutocompleteExample;
@@ -302,6 +345,7 @@
 				3A02AF601E6351FA007E01A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,10 @@
+framework module EmojiKit {
+  umbrella header "EmojiKit.h"
+
+  export *
+  module * { export * }
+}
+
+module EmojiKit.Swift {
+    header "EmojiKit-Swift.h"
+}
